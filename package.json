@@ -1,0 +1,40 @@
+{
+    "main": "src/main.js",
+    "name": "reptile",
+    "version": "1.0.0",
+    "description": "reptile taobao",
+    "scripts": {
+        "serve": "node src/start.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "buildBefore":"npm i -g @zeit/ncc && npm i -g nexe",
+        "pkgwin": "del bin\\index.exe && pkg -t win src\\index.js -o bin\\index.exe",
+        "nexe": "ncc build src\\index.js -o bin -m && nexe -i bin\\index.js -o bin\\index.exe",
+        "exe": "cd bin && index.exe"
+    },
+    "author": "zw",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.18.0",
+        "formdata-node": "^1.5.2",
+        "js-base64": "^2.5.1",
+        "log4js": "^4.1.1",
+        "node-fetch": "^2.5.0",
+        "puppeteer": "^1.15.0",
+        "puppeteer-core": "^1.9.0",
+        "query-string": "^6.5.0",
+        "request": "^2.88.0",
+        "request-promise": "^4.2.4"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.4",
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
+        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+        "@babel/plugin-transform-modules-commonjs": "^7.4.4",
+        "@babel/plugin-transform-runtime": "^7.4.4",
+        "@babel/polyfill": "^7.4.4",
+        "@babel/preset-stage-0": "^7.0.0",
+        "@babel/preset-stage-3": "^7.0.0",
+        "ms": "^2.1.1"
+    },
+    "browserslist": "> 0.25%, not dead"
+}
