@@ -24,8 +24,8 @@ function doSearchCallBack(parentKeyword) {
                 html = body.find(".relatedkeywords").prop("outerHTML");
                 if (html) {
                     html = html.replace("</h3>", count + "</h3>");
-                }else{
-                    console.log("关键字["+keyword+"] 找不到指定的数据");
+                } else {
+                    console.log("关键字[" + keyword + "] 找不到指定的数据");
                     return;
                 }
             }
@@ -257,6 +257,12 @@ function searchAll() {
 }
 //searchBaseUrl="/search/mall/";
 function doHook() {
+    if (location.href != "http://search.rakuten.co.jp/search/mall") {
+        if (confirm("只支持在指定页面运行，是否调到指定页面？")) {
+            location.href = "http://search.rakuten.co.jp/search/mall";
+            return;
+        }
+    }
     if (typeof searchBaseUrl == "undefined") {
         searchBaseUrl = "/search/mall/";
     }
