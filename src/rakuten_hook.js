@@ -257,9 +257,9 @@ function searchAll() {
 }
 //searchBaseUrl="/search/mall/";
 function doHook() {
-    if (location.href != "http://search.rakuten.co.jp/search/mall") {
+    if (location.href.indexOf("//search.rakuten.co.jp/search/mall") ==-1){
         if (confirm("只支持在指定页面运行，是否调到指定页面？")) {
-            location.href = "http://search.rakuten.co.jp/search/mall";
+            location.href = "//search.rakuten.co.jp/search/mall";
             return;
         }
     }
