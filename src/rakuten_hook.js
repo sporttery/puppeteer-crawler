@@ -266,27 +266,39 @@ function doHook() {
     if (typeof searchBaseUrl == "undefined") {
         searchBaseUrl = "/search/mall/";
     }
+    var head = document.querySelector("head");
     if (typeof jQuery == "undefined") {
         if (!document.getElementById("hasJquery")) {
-            console.log("开始注入标准库1");
-            var head = document.getElementsByTagName("head")[0];
-            head.innerHTML = head.innerHTML + '<script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.2.4/jquery.min.js"></script><input type="hidden" id="hasJquery"/>'
+            console.error("开始注入标准库1");
+            let jQuerySc = document.createElement("scr"+"ipt");
+            jQuerySc.src = "http://libs.baidu.com/jquery/2.1.4/jquery.min.js";
+            jQuerySc.id = "hasJquery";
+            head.appendChild(jQuerySc);
         }
-        console.log(new Date() + " 标准库1注入未完成，等待中....");
-        setTimeout(doHook, 1000);
+        console.error(new Date() + " 标准库1注入未完成，等待中....");
+        setTimeout(doHook, 2000);
         return;
     }
-    console.log("标准库1已经完成注入");
+    console.info("标准库1已经完成注入");
     if (typeof layer == "undefined") {
         if (!document.getElementById("hasLayer")) {
-            console.log("开始注入标准库2");
-            jQuery("head").append('<link href="https://cdn.bootcdn.net/ajax/libs/layer/2.3/skin/layer.css" rel="stylesheet"><script src="https://cdn.bootcdn.net/ajax/libs/layer/2.3/layer.js"></script><input type="hidden" id="hasLayer"/>');
+            console.error("开始注入标准库2");
+            // jQuery("head").append('<link href="https://cdn.bootcdn.net/ajax/libs/layer/2.3/skin/layer.css" rel="stylesheet">'+
+            // '<script src="https://cdn.bootcdn.net/ajax/libs/layer/2.3/layer.js" id="hasLayer"></script>');
+            let layerJs = document.createElement("scr"+"ipt");
+            layerJs.src = "https://cdn.bootcdn.net/ajax/libs/layer/2.3/layer.js";
+            layerJs.id = "hasLayer";
+            head.appendChild(layerJs);
+            let layerCss = document.createElement("li"+"nk");
+            layerCss.href="https://cdn.bootcdn.net/ajax/libs/layer/2.3/skin/layer.css";
+            layerCss.rel="stylesheet";
+            head.appendChild(layerCss);
         }
-        console.log(new Date() + " 标准库2注入未完成，等待中....");
-        setTimeout(doHook, 1000);
+        console.error(new Date() + " 标准库2注入未完成，等待中....");
+        setTimeout(doHook, 2000);
         return;
     }
-    console.log("标准库2已经完成注入");
+    console.info("标准库2已经完成注入");
     $(".header,.nav,.footer,.anshin,.corporate,.tooltip,.overlay").remove();
     $(".main").html('<h1>脚本注入成功，功能说明：</h1><h3>1.输入<a href="javascript:doKeywords()" class="dui-button -big" style="color:red">关键字</a><br/>2.点搜索<br/>3.下拉到页面底部，找到热搜词 <br/>4.点击热搜词<br/>5.抓取打开页面评论最多的前5个，如果都不足5个，有多少取多少。（标题和图片）<br/>6 抓取整页的所有关键词，除打广告的除外<br/>7 重复456步骤，将第3步的所有热搜词和整页的词全部抓取一次<br/>8 完成第7步后，分别统计前5标题的词频和全面标题的词频<br/><br/> </h3>');
 }
