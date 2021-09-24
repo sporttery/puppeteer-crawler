@@ -293,7 +293,7 @@ function doHook() {
             layerCss.href="https://cdn.bootcdn.net/ajax/libs/layer/2.3/skin/layer.css";
             layerCss.rel="stylesheet";
             head.appendChild(layerCss);
-        }else if (!document.getElementById("hasLayer1")) {{
+        }else if (!document.getElementById("hasLayer1")) {
             // https://api.secretzq.com/secretzq/css/layer.css
             //https://api.secretzq.com/secretzq/js/layer.js
             let layerJs = document.createElement("scr"+"ipt");
