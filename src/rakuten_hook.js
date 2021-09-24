@@ -293,6 +293,17 @@ function doHook() {
             layerCss.href="https://cdn.bootcdn.net/ajax/libs/layer/2.3/skin/layer.css";
             layerCss.rel="stylesheet";
             head.appendChild(layerCss);
+        }else if (!document.getElementById("hasLayer1")) {{
+            // https://api.secretzq.com/secretzq/css/layer.css
+            //https://api.secretzq.com/secretzq/js/layer.js
+            let layerJs = document.createElement("scr"+"ipt");
+            layerJs.src = "https://api.secretzq.com/secretzq/js/layer.js";
+            layerJs.id = "hasLayer1";
+            head.appendChild(layerJs);
+            let layerCss = document.createElement("li"+"nk");
+            layerCss.href="https://api.secretzq.com/secretzq/css/layer.css";
+            layerCss.rel="stylesheet";
+            head.appendChild(layerCss);
         }
         console.error(new Date() + " 标准库2注入未完成，等待中....");
         setTimeout(doHook, 2000);
